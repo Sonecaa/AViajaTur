@@ -64,4 +64,22 @@ public class PassagemDAO {
 
         return pass;
     }
+    
+    public List<Passagem> getPassagemPorOnibus(Integer idOnibus) {
+        List<Passagem> pass = new ArrayList<>();
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU");
+
+        EntityManager em = emf.createEntityManager();
+
+        Query q = em.createQuery("SELECT l FROM Passagem l WHERE l.idOnibus = :id").setParameter("id", idOnibus);
+        
+        pass = q.getResultList();
+
+
+        em.close();
+        emf.close();
+
+        return pass;
+    }
 }

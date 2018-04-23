@@ -27,13 +27,23 @@
         %>
         <select name="cmbOnibus">
             <c:forEach items="${listaOni}" var="x">
-                <option value="<c:out value="${x.idOnibus}"></c:out>"><c:out value="${x.idOnibus}"></c:out></option>
+                <option value="<c:out value="${x.idOnibus}"></c:out>"><c:out value="${x.idOnibus}"></c:out> - <c:out value="${x.fkLinha.nome}"></c:out>  </option>
             </c:forEach>
         </select>
         <br>
-        <select name="cmbPassagem">
-            
+        <select name="cmbPassagem" id="cmbPassagem">
+
         </select>
-        
+
+
+        <script>
+            $(document).ready(function () {
+                $("#cmbPassagem").select(function () {
+                    $.ajax({url: "passagemPorOnibus.jsp", success: function (result) {
+                            $("#cmbPassagem").html(result);
+                        }});
+                });
+            });
+        </script>
     </body>
 </html>
