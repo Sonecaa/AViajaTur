@@ -22,7 +22,7 @@
             List<Linha> linhas = linDAO.getAllLinhas();
             request.setAttribute("linhas", linhas);
         %>
-         <table cellpadding="10"  class="table-bordered">
+         <table cellpadding="10"  class="table-bordered  table-striped">
             <tr>
             <th>IdLinha</th>
             <th> Nome da linha</th>            

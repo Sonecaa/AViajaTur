@@ -5,28 +5,26 @@
 <%@page import="classesDAOpure.OnibusDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-            <script>
-            $(document).ready(function () {
-                $("#cmbOnibus").on('change',function() {
-                    $.ajax({url: "passagemPorOnibus.jsp", success: function (result) {
-                            $("#cmbPassagem").html(result);
-                        }});
-                });
-                
-                 $('select').on('change', function() {
-                   
-                     $.ajax({url: "pages/passagemPorOnibus.jsp?idOnibus=" +  this.value , success: function (result) {
-                            $("#cmbPassagem").html(result);
-                        }});
-                })
-            });
-            
-             
-        </script>
+<script>
+    $(document).ready(function () {
+    
+
+        $('#cmbOnibus').on('change', function () {
+
+            $.ajax({url: "pages/passagemPorOnibus.jsp?idOnibus=" + this.value, success: function (result) {
+                    $("#cmbPassagem").html(result);
+                }});
+        })
+    });
 
 
-        <h1>Comprar Passagem</h1>
+</script>
 
+
+<h1>Comprar Passagem</h1>
+
+<form action="home" method="post">
+    <div class="form-group"> 
         <%
             OnibusDAO oniDao = new OnibusDAO();
 
@@ -34,13 +32,18 @@
 
             request.setAttribute("listaOni", listaOni);
         %>
-        <select name="cmbOnibus" >
+        Onibus/Linha:
+        <select class="form-control" name="cmbOnibus" id="cmbOnibus" >
             <c:forEach items="${listaOni}" var="x">
                 <option value="<c:out value="${x.idOnibus}"></c:out>"><c:out value="${x.idOnibus}"></c:out> - <c:out value="${x.fkLinha.nome}"></c:out>  </option>
             </c:forEach>
         </select>
-        <br>
-        <select name="cmbPassagem" id="cmbPassagem">
-
+    </div>
+    <div class="form-group"> 
+        Passagens:
+        <select class="form-control" name="cmbPassagem" id="cmbPassagem">
         </select>
-
+    </div>
+    <input type="hidden" name="txtPagina" value="criarVenda">
+    <button type="submit" class="btn btn-success">Comprar</button>    
+</form>

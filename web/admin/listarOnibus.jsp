@@ -23,7 +23,7 @@
             request.setAttribute("onibus", onibus);
         %>
         
-        <table cellpadding="10"  class="table-bordered">
+        <table cellpadding="10"  class="table-bordered  table-striped">
             <tr>
             <th>IdOnibus</th>
             <th>Numero de Poltronas</th>

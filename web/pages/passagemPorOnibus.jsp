@@ -13,6 +13,6 @@
    request.setAttribute("lista", lista);
 %>
 <c:forEach items="${lista}" var="x">
-    <fmt:formatDate value="${x.dataEhora}" pattern="dd/MM/yyyy" var="newdatevar" />
+    <fmt:formatDate value="${x.dataEhora}" pattern="dd/MM/yyyy HH:mm:ss" var="newdatevar" />
     <option value="<c:out value="${x.idPassagem}"></c:out>" >    <c:out value="${newdatevar}"></c:out> - <c:out value="${x.valor}"></c:out> </option>
 </c:forEach>

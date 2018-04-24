@@ -12,6 +12,7 @@ import classesController.rotas.RotasPagina;
 import classesController.rotas.RotaCriarLinha;
 import classesController.rotas.RotaCriarOnibus;
 import classesBEAN.Cliente;
+import classesController.rotas.RotaCriarVenda;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -43,6 +44,7 @@ public class HomeController extends HttpServlet {
         comandos.put("criarLinha", new RotaCriarLinha());
         comandos.put("criarOnibus", new RotaCriarOnibus());
         comandos.put("criarPassagem", new RotaCriarPassagem());
+        comandos.put("criarVenda", new RotaCriarVenda());
         comandos.put("AcaoNotFound", new RotaNotFound());
     }
 
