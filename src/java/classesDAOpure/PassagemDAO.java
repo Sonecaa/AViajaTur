@@ -72,7 +72,7 @@ public class PassagemDAO {
 
         EntityManager em = emf.createEntityManager();
 
-        Query q = em.createQuery("SELECT l FROM Passagem l WHERE l.idOnibus = :id").setParameter("id", idOnibus);
+        Query q = em.createQuery("SELECT l FROM Passagem l WHERE l.fkOnibus.idOnibus = :id").setParameter("id", idOnibus);
         
         pass = q.getResultList();
 

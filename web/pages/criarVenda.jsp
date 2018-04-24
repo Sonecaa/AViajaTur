@@ -1,21 +1,30 @@
-<%-- 
-    Document   : criarVenda
-    Created on : 20/04/2018, 21:50:13
-    Author     : aluno
---%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="classesBEAN.Onibus"%>
 <%@page import="java.util.List"%>
 <%@page import="classesDAOpure.OnibusDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Visualizar historico</title>
-    </head>
-    <body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+            <script>
+            $(document).ready(function () {
+                $("#cmbOnibus").on('change',function() {
+                    $.ajax({url: "passagemPorOnibus.jsp", success: function (result) {
+                            $("#cmbPassagem").html(result);
+                        }});
+                });
+                
+                 $('select').on('change', function() {
+                   
+                     $.ajax({url: "pages/passagemPorOnibus.jsp?idOnibus=" +  this.value , success: function (result) {
+                            $("#cmbPassagem").html(result);
+                        }});
+                })
+            });
+            
+             
+        </script>
+
+
         <h1>Comprar Passagem</h1>
 
         <%
@@ -25,7 +34,7 @@
 
             request.setAttribute("listaOni", listaOni);
         %>
-        <select name="cmbOnibus">
+        <select name="cmbOnibus" >
             <c:forEach items="${listaOni}" var="x">
                 <option value="<c:out value="${x.idOnibus}"></c:out>"><c:out value="${x.idOnibus}"></c:out> - <c:out value="${x.fkLinha.nome}"></c:out>  </option>
             </c:forEach>
@@ -35,15 +44,3 @@
 
         </select>
 
-
-        <script>
-            $(document).ready(function () {
-                $("#cmbPassagem").select(function () {
-                    $.ajax({url: "passagemPorOnibus.jsp", success: function (result) {
-                            $("#cmbPassagem").html(result);
-                        }});
-                });
-            });
-        </script>
-    </body>
-</html>
