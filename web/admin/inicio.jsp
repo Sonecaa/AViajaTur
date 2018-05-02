@@ -10,9 +10,16 @@
     </div>
     <div class="col-md-4">
         <ul class="list-group">
-            <li class="list-group-item"><a href="template.jsp?page=listarLinha">Listar Linha</a></li>
+            <li class="list-group-item"><a href="template.jsp?page=listarLinha">Listar Linhas</a></li>
             <li class="list-group-item"><a href="template.jsp?page=listarOnibus">Listar Onibus</a></li>
-            <li class="list-group-item"><a href="template.jsp?page=listarPassagem">Listar Passagem</a></li>
+            <li class="list-group-item"><a href="template.jsp?page=listarPassagem">Listar Passagens</a></li>
+            <li class="list-group-item"><a href="template.jsp?page=listarVenda">Listar Vendas</a></li>
+        </ul>
+    </div>
+     <div class="col-md-4">
+        <ul class="list-group">
+            <li class="list-group-item"><a href="template.jsp?page=lucroPorViagem">Lucros por viagem</a></li>
+            <li class="list-group-item"><a href="template.jsp?page=lucroPorViagem">Lucro mensal (FAZER)</a></li>
         </ul>
     </div>
 </div>

@@ -25,7 +25,12 @@ public class RotaCriarVenda implements RotasPagina{
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=inicio");
-         
+       
+       if(Integer.parseInt(request.getParameter("numeroDisponiveis")) < 0){
+           rd.forward(request, response);
+       }
+       
+       
        DateFormat  dtF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date dt = new Date();
         

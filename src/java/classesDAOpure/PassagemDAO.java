@@ -82,4 +82,50 @@ public class PassagemDAO {
 
         return pass;
     }
+    
+    public int GetVagasDisponiveis(int idPassagem){
+        int VagasDisponiveis = 0;
+        int totalVagasOni = 0;
+        int totalNumVendidasPass = 0;
+        
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU");
+        EntityManager em = emf.createEntityManager();
+        
+        Query q = em.createQuery("SELECT l.fkOnibus.numPoltronas FROM Passagem l WHERE l.idPassagem = :id").setParameter("id", idPassagem);
+        List<Integer> listaDeInteiros = q.getResultList();
+        totalVagasOni = listaDeInteiros.get(0);
+        
+        Query q2 = em.createQuery("SELECT v FROM Venda v WHERE v.fkPassagem.idPassagem = :id").setParameter("id", idPassagem);
+        totalNumVendidasPass = q2.getResultList().size();
+        
+        VagasDisponiveis = totalVagasOni - totalNumVendidasPass;
+        
+        em.close();
+        emf.close();
+        
+        return VagasDisponiveis;
+    }
+    
+    public Double GetLucroPorPassagem(int idPassagem){
+        Double TotalLucro = 0D;
+
+        
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU");
+        EntityManager em = emf.createEntityManager();
+        
+        Query q = em.createQuery("SELECT v.fkPassagem.valor FROM Venda v WHERE v.fkPassagem.idPassagem = :id").setParameter("id", idPassagem);
+        List<Double> listaDeInteiros = q.getResultList();
+        for (int i = 0; i < listaDeInteiros.size(); i++) {
+            TotalLucro = TotalLucro + listaDeInteiros.get(i);
+        }
+        
+        
+        
+        em.close();
+        emf.close();
+        
+        return TotalLucro;
+    }
+    
+    
 }

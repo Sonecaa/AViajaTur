@@ -13,6 +13,14 @@
 
             $.ajax({url: "pages/passagemPorOnibus.jsp?idOnibus=" + this.value, success: function (result) {
                     $("#cmbPassagem").html(result);
+                    $("#numeroDisponiveis").html("");
+                }});
+        })
+        
+         $('#cmbPassagem').on('change', function () {
+
+            $.ajax({url: "pages/numeroVagasDiponiveis.jsp?passagem=" + this.value, success: function (result) {
+                    $("#numeroDisponiveis").html(result);
                 }});
         })
     });
@@ -42,8 +50,14 @@
     <div class="form-group"> 
         Passagens:
         <select class="form-control" name="cmbPassagem" id="cmbPassagem">
+            <option>Escolha o onibus primeiro</option>
         </select>
     </div>
+    
+    <div class="form-group" id="numeroDisponiveis"> 
+     
+    </div>    
+        
     <input type="hidden" name="txtPagina" value="criarVenda">
     <button type="submit" class="btn btn-success">Comprar</button>    
 </form>

@@ -48,4 +48,21 @@ public class VendaDAO {
 
         return vendas;
     }
+     public List<Venda> getAllVendas() {
+        List<Venda> vendas = new ArrayList<>();
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU");
+
+        EntityManager em = emf.createEntityManager();
+
+        Query q = em.createQuery("SELECT v FROM Venda v");
+        
+        vendas = q.getResultList();
+
+
+        em.close();
+        emf.close();
+
+        return vendas;
+    }
 }
