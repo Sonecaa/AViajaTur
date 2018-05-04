@@ -19,7 +19,7 @@
      <div class="col-md-4">
         <ul class="list-group">
             <li class="list-group-item"><a href="template.jsp?page=lucroPorViagem">Lucros por viagem</a></li>
-            <li class="list-group-item"><a href="template.jsp?page=lucroPorViagem">Lucro mensal (FAZER)</a></li>
+            <li class="list-group-item"><a href="template.jsp?page=lucroMensal">Lucro mensal (FAZER)</a></li>
         </ul>
     </div>
 </div>
